@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/tv_table_task_name"
+            android:textSize="16dp"
+            android:textColor="#000"
+            android:padding="2dp"
+            android:background="@drawable/border">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/tv_table_task_unit"
+            android:textSize="16dp"
+            android:textColor="#000"
+            android:padding="2dp"
+            android:background="@drawable/border">
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/tv_table_task_max"
+            android:textSize="16dp"
+            android:textColor="#000"
+            android:padding="2dp"
+            android:background="@drawable/border">
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>

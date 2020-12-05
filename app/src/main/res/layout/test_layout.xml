@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1,2,3">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_table_task_name"
+                android:textSize="16dp"
+                android:textColor="#000"
+                android:padding="2dp"
+                android:background="@drawable/border"
+                android:layout_column="1"/>
+
+            <TextView
+                android:id="@+id/tv_table_task_unit"
+                android:textSize="16dp"
+                android:textColor="#000"
+                android:padding="10dp"
+                android:background="@drawable/border"
+                android:layout_column="1"/>
+
+            <TextView
+                android:id="@+id/tv_table_task_max"
+                android:textSize="16dp"
+                android:textColor="#000"
+                android:padding="10dp"
+                android:background="@drawable/border"
+                android:layout_column="1"/>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>
