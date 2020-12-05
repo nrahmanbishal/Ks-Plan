@@ -9,6 +9,7 @@ public class TaskHelper implements Serializable {
     private int max;
     private int increment;
     private String infoLink;
+    private  String name="bishal";
 
     public TaskHelper(String taskName, String unit, int min, int max, int increment, String infoLink) {
         this.taskName = taskName;
