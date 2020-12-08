@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ import java.util.Calendar;
 public class TaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     TextView date;
     RecyclerView recyclerViewTasks;
-    ArrayList<TaskHelper> mLists;
+    //ArrayList<TaskHelper> mLists;
+    ArrayList<TaskHelper> object;
     Button editor;
 
     @Override
@@ -50,6 +52,11 @@ public class TaskActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(TaskActivity.this,EditorActivity.class);
+                if(object!=null){
+                    Bundle args = new Bundle();
+                    args.putSerializable("ARRAYLIST",(Serializable)object);
+                    intent.putExtra("BUNDLE",args);
+                }
                 startActivity(intent);
             }
         });
@@ -88,7 +95,7 @@ public class TaskActivity extends AppCompatActivity implements DatePickerDialog.
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 Bundle args = data.getBundleExtra("BUNDLE");
-                ArrayList<TaskHelper> object = (ArrayList<TaskHelper>) args.getSerializable("ARRAYLIST");
+                object = (ArrayList<TaskHelper>) args.getSerializable("ARRAYLIST");
                 TaskRecyclerViewAdapter myAdapter=new TaskRecyclerViewAdapter(object,TaskActivity.this);
                 recyclerViewTasks.setAdapter(myAdapter);
             }
@@ -103,6 +110,5 @@ public class TaskActivity extends AppCompatActivity implements DatePickerDialog.
         c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
         String currentDate= DateFormat.getDateInstance().format(c.getTime());
         date.setText(currentDate);
-
     }
 }

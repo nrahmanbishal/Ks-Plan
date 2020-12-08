@@ -82,6 +82,14 @@ public class EditorActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        Intent intent = getIntent();
+        if(intent.getBundleExtra("BUNDLE")!=null){
+            Bundle args = intent.getBundleExtra("BUNDLE");
+            tableTasks=(ArrayList<TaskHelper>) args.getSerializable("ARRAYLIST");
+            tableAdapter=new TableAdapter(tableTasks,this);
+            recyclerViewTable.setAdapter(tableAdapter);
+        }
     }
 
 
