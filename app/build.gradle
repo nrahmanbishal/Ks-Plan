@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.ksplan"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -39,5 +39,8 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc03"
+
+
+    implementation 'com.github.codekidX:storage-chooser:2.0.4.4'
 
 }

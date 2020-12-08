@@ -59,18 +59,23 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
         holder.buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(currentTask.getResult()<100){
                 currentTask.setResultNumber(currentTask.getResultNumber()+currentTask.getIncrement());
-                holder.progressBarTask.setProgress((int)currentTask.getResultNumber());
-                holder.ProgressbarProgress.setText(String.valueOf(currentTask.getResultNumber())+"%");
+                currentTask.setResult((int)(currentTask.getResultNumber()/currentTask.getMin()*100));
+                holder.progressBarTask.setProgress(currentTask.getResult());
+                holder.ProgressbarProgress.setText(currentTask.getResult()+"%");}
+
             }
         });
 
         holder.buttonMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentTask.setResultNumber(currentTask.getResultNumber()-currentTask.getIncrement());
-                holder.progressBarTask.setProgress((int)currentTask.getResultNumber());
-                holder.ProgressbarProgress.setText(String.valueOf(currentTask.getResultNumber())+"%");
+                if(currentTask.getResult()>0){
+                    currentTask.setResultNumber(currentTask.getResultNumber()-currentTask.getIncrement());
+                    currentTask.setResult((int)(currentTask.getResultNumber()/currentTask.getMin()*100));
+                    holder.progressBarTask.setProgress(currentTask.getResult());
+                    holder.ProgressbarProgress.setText(currentTask.getResult()+"%");}
             }
         });
 

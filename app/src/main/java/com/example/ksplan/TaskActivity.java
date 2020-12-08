@@ -60,6 +60,7 @@ public class TaskActivity extends AppCompatActivity implements DatePickerDialog.
                     Bundle args = new Bundle();
                     args.putSerializable("ARRAYLIST",(Serializable)object);
                     intent.putExtra("BUNDLE",args);
+                    intent.putExtra("name",c.getTimeInMillis());
                 }
                 startActivity(intent);
             }
