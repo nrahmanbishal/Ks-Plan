@@ -7,11 +7,13 @@ public class TaskHelper implements Serializable {
     private String unit;
     private int min;
     private int max;
-    private int increment;
+    private double increment;
     private String infoLink;
-    private  String name="bishal";
 
-    public TaskHelper(String taskName, String unit, int min, int max, int increment, String infoLink) {
+    private double resultNumber=0.0;
+    private int result;
+
+    public TaskHelper(String taskName, String unit, int min, int max, double increment, String infoLink) {
         this.taskName = taskName;
         this.unit = unit;
         this.min = min;
@@ -49,11 +51,23 @@ public class TaskHelper implements Serializable {
         return max;
     }
 
-    public int getIncrement() {
+    public double getIncrement() {
         return increment;
     }
 
     public String getInfoLink() {
         return infoLink;
+    }
+
+    public void setResultNumber(double resultNumber) {
+        this.resultNumber = resultNumber;
+    }
+
+    public double getResultNumber() {
+        return resultNumber;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 }

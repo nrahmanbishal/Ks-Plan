@@ -40,6 +40,10 @@ public class TaskActivity extends AppCompatActivity implements DatePickerDialog.
         final Button dateButon=findViewById(R.id.btn_date);
         editor=findViewById(R.id.btn_edit);
 
+        Calendar c= Calendar.getInstance();
+        String currentDate= DateFormat.getDateInstance().format(c.getTime());
+        date.setText(currentDate);
+
         dateButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

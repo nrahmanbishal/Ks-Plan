@@ -41,15 +41,36 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull TaskRecyclerViewViewHorder holder, int position) {
+
         TaskHelper currentTask=mTasks.get(position);
         holder.taskName.setText(currentTask.getTaskName());
-        holder.tasDescription.setText("von "+currentTask.getMin()+" "+currentTask.getUnit()+" (bis zu "+currentTask.getMax()+" "+currentTask.getUnit());
+        holder.tasDescription.setText(currentTask.getIncrement() +" von "+currentTask.getMin()+" "+currentTask.getUnit()+" (bis zu "+currentTask.getMax()+" "+currentTask.getUnit()+")");
+        holder.progressBarTask.setProgress(0);
+        holder.ProgressbarProgress.setText(String.valueOf(0)+"%");
         holder.buttonInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, WebWindowActivity.class);
                 intent.putExtra("URL", currentTask.getInfoLink());
                 context.startActivity(intent);
+            }
+        });
+
+        holder.buttonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentTask.setResultNumber(currentTask.getResultNumber()+currentTask.getIncrement());
+                holder.progressBarTask.setProgress((int)currentTask.getResultNumber());
+                holder.ProgressbarProgress.setText(String.valueOf(currentTask.getResultNumber())+"%");
+            }
+        });
+
+        holder.buttonMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentTask.setResultNumber(currentTask.getResultNumber()-currentTask.getIncrement());
+                holder.progressBarTask.setProgress((int)currentTask.getResultNumber());
+                holder.ProgressbarProgress.setText(String.valueOf(currentTask.getResultNumber())+"%");
             }
         });
 

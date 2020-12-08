@@ -36,6 +36,7 @@ public class EditorActivity extends AppCompatActivity {
     RecyclerView recyclerViewTable;
     Button btnSelectFile;
     Button btnSelectBack;
+    Button btnSaveFile;
     ArrayList<TaskHelper> tableTasks;
     TableAdapter tableAdapter;
 
@@ -59,6 +60,7 @@ public class EditorActivity extends AppCompatActivity {
         recyclerViewTable.setHasFixedSize(true);
         btnSelectFile=findViewById(R.id.btn_select_file);
         btnSelectBack=findViewById(R.id.btn_select_back);
+        btnSaveFile=findViewById(R.id.btn_select_folder);
         tableTasks=new ArrayList<>();
 
         btnSelectFile.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +91,16 @@ public class EditorActivity extends AppCompatActivity {
             tableTasks=(ArrayList<TaskHelper>) args.getSerializable("ARRAYLIST");
             tableAdapter=new TableAdapter(tableTasks,this);
             recyclerViewTable.setAdapter(tableAdapter);
+
+            btnSaveFile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(tableTasks!=null){
+
+                    }
+                }
+            });
+
         }
     }
 
@@ -113,7 +125,7 @@ public class EditorActivity extends AppCompatActivity {
                     while ((line=br.readLine())!=null)
                     {
                         String[] tokens = line.split(",");
-                        TaskHelper row=new TaskHelper(tokens[0],tokens[1],Integer.parseInt(tokens[2]),Integer.parseInt(tokens[3]),Integer.parseInt(tokens[4]),tokens[5]);
+                        TaskHelper row=new TaskHelper(tokens[0],tokens[1],Integer.parseInt(tokens[2]),Integer.parseInt(tokens[3]),Double.parseDouble(tokens[4]),tokens[5]);
                         tableTasks.add(row);
 
                     }
