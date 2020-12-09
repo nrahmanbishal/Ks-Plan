@@ -14,17 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+//Setting up the tasks recyclerview
 public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerViewAdapter.TaskRecyclerViewViewHorder> {
     private ArrayList<TaskHelper> mTasks;
     private Context context;
 
-//    public TaskRecyclerViewAdapter(ArrayList<TaskHelper> mTasks) {
-//        this.mTasks = mTasks;
-//    }
-//
-//    public TaskRecyclerViewAdapter(Context context) {
-//        this.context = context;
-//    }
 
     public TaskRecyclerViewAdapter(ArrayList<TaskHelper> mTasks, Context context) {
         this.mTasks = mTasks;
@@ -56,6 +50,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
             }
         });
 
+        //Button manipulations and calculation
         holder.buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

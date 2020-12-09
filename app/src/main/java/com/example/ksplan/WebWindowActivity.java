@@ -7,6 +7,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+
+//Setting up the web view
 public class WebWindowActivity extends AppCompatActivity {
     WebView webView;
 

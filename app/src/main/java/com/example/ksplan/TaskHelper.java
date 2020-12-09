@@ -2,6 +2,7 @@ package com.example.ksplan;
 
 import java.io.Serializable;
 
+//Constructing the helper class to hold the data
 public class TaskHelper implements Serializable {
     private String taskName;
     private String unit;
@@ -22,18 +23,6 @@ public class TaskHelper implements Serializable {
         this.infoLink = infoLink;
     }
 
-    public TaskHelper(String taskName, String unit, int min, int max) {
-        this.taskName = taskName;
-        this.unit = unit;
-        this.min = min;
-        this.max = max;
-    }
-
-    public TaskHelper(String taskName, String unit, int max) {
-        this.taskName = taskName;
-        this.unit = unit;
-        this.max = max;
-    }
 
     public String getTaskName() {
         return taskName;
