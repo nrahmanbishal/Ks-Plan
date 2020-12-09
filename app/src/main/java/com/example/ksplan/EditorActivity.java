@@ -67,6 +67,25 @@ public class EditorActivity extends AppCompatActivity {
             return;
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission is granted", Toast.LENGTH_SHORT).show();
+
+            } else {
+
+
+                Toast.makeText(this, "revoked", Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                ;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            //Log.v(TAG,"Permission is granted");
+
+        }
+
+
         recyclerViewTable=findViewById(R.id.recyclerview_table);
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewTable.setLayoutManager(layoutManager);
@@ -136,19 +155,29 @@ public class EditorActivity extends AppCompatActivity {
 
 
                             StringBuilder data=new StringBuilder();
-                            data.append("Name,Unit,Min,Max,Increment,info,result,Result%");
+                            data.append("Name,Unit,Min,Max,Increment,info,result,Result%\n");
                             for (int i = 0; i < tableTasks.size(); i++) {
                                 data.append(tableTasks.get(i).getTaskName()+","+tableTasks.get(i).getUnit()+","+String.valueOf(tableTasks.get(i).getMin())+","+String.valueOf(tableTasks.get(i).getMax())+","+
                                         String.valueOf(tableTasks.get(i).getIncrement())+","+tableTasks.get(i).getInfoLink()+","+String.valueOf(tableTasks.get(i).getResultNumber())+","+
                                         String.valueOf(tableTasks.get(i).getResult())+"\n");
                             }
 
-                            try {
-                                FileOutputStream out=new FileOutputStream(name+".csv");
 
-                            } catch (FileNotFoundException e) {
+//                            File myDir = new File(path);
+//                            if (!myDir.exists()) {
+//                                myDir.mkdirs();
+//                            }
+                            File file = new File (path, name+".csv");
+
+                            try {
+                                FileOutputStream out = new FileOutputStream(file);
+                                out.write(data.toString().getBytes());
+                                out.close();
+                                Toast.makeText(EditorActivity.this, "Filesaved", Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
                                 e.printStackTrace();
                             }
+
                         }
                     });
 
@@ -210,6 +239,11 @@ public class EditorActivity extends AppCompatActivity {
                 // User refused to grant permission.
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
             }
+        }
+        if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            
+            Toast.makeText(this, "Permission: \"+permissions[0]+ \"was \"+grantResults[0]", Toast.LENGTH_SHORT).show();
+            //resume tasks needing this permission
         }
     }
 }
