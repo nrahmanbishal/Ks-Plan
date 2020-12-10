@@ -198,10 +198,14 @@ public class EditorActivity extends AppCompatActivity {
                     FileInputStream input =new FileInputStream(file);
                     BufferedReader br=new BufferedReader(new InputStreamReader(input,"UTF-8"));
                     String line;
+                    //skipping first two line
+                    br.readLine();
+                    br.readLine();
+
                     while ((line=br.readLine())!=null)
                     {
                         String[] tokens = line.split(",");
-                        TaskHelper row=new TaskHelper(tokens[0],tokens[1],Integer.parseInt(tokens[2]),Integer.parseInt(tokens[3]),Double.parseDouble(tokens[4]),tokens[5]);
+                        TaskHelper row=new TaskHelper(tokens[1],tokens[2],Integer.parseInt(tokens[3]),Integer.parseInt(tokens[4]),Double.parseDouble(tokens[5]),tokens[6]);
                         tableTasks.add(row);
 
                     }
